@@ -5,12 +5,13 @@ description: "Kindle Book Notes"
 ---
 
 <section class="section">
-    <h2>Books</h2>
-    <div class="container flex flex-wrap justify-between p-8 border-2 border-black">
-        {% for book in bookNotes %}
+    <h2>My Books</h2>
+    <div class="container flex flex-wrap justify-center p-8 border-2 border-black">
+        {% for book in bookData %}
             <div class="book">
-                <h2>{{book.fileName}}</p>
-                <embed src="/static/pdfs/{{book.trimmedName}}" width="300" height="375"/>
+                <h3 class="font-bold">{{book.fileName}}</h3>
+                <embed src="/static/pdfs/{{book.trimmedName}}" width="100%" class="my-3"/>
+                <a href="{{book.downloadLink}}">DOWNLOAD NOTES</a>
                 {# <a href="{{book.link}}">View Notes</a> #}
             </div>
         {% endfor %}

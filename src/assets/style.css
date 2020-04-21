@@ -597,6 +597,7 @@ video {
 
 h1 {
   font-size: 1.5rem;
+  font-weight: 700;
 }
 
 h2 {
@@ -13974,11 +13975,12 @@ a {
 .book {
   max-width: 20rem;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin: 1.5rem;
   text-align: center;
-  background-color: #feb2b2;
+  background-color: #f7fafc;
   border-width: 2px;
-  border-color: #edf2f7;
+  border-color: #e2e8f0;
+  border-radius: 0.375rem;
 }
 
 @media (min-width: 640px) {

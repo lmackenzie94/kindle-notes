@@ -88,15 +88,13 @@ function listFiles(auth) {
       q: `"${process.env.FOLDER_ID}" in parents`,
       fields: 'nextPageToken, files(id, name)',
     },
-    (err, res) => {
+    async (err, res) => {
       if (err) return console.log('The API returned an error: ' + err);
       const files = res.data.files;
       if (files.length) {
-        files.map((file) => {
-          let trimmedFileName = removeSpaces(file.name);
-          getFile(auth, file.id);
-          downloadFile(auth, file.id, trimmedFileName);
-        });
+        downloadFiles(auth, files);
+        const content = await getFiles(auth, files);
+        writeDataFile(content);
       } else {
         console.log('No files found.');
       }
@@ -108,50 +106,71 @@ function listFiles(auth) {
  * Downloads the files to a local directory
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
-async function downloadFile(auth, fileId, fileName) {
-  if (fs.existsSync(`static/pdfs/${fileName}`)) {
-    console.log(`${fileName} already exists`);
-    return;
-  }
+async function downloadFiles(auth, files) {
   const drive = google.drive({ version: 'v3', auth });
-  const dest = fs.createWriteStream(`static/pdfs/${fileName}`);
-  try {
-    const res = await drive.files.get(
-      { fileId: fileId, alt: 'media' },
-      { responseType: 'stream' }
-    );
-    res.data
-      .on('end', function () {
-        console.log(`Downloading ${fileName}...`);
-      })
-      .on('error', function (err) {
-        console.log('Error during download', err);
-      })
-      .pipe(dest);
-  } catch (err) {
-    console.log(`Download error: ${err}`);
-  }
+
+  const downloadFile = async (file) => {
+    let trimmedFileName = cleanupFileName(file.name);
+    if (fs.existsSync(`static/pdfs/${trimmedFileName}`)) {
+      console.log(`${trimmedFileName} already exists`);
+      return;
+    }
+    const dest = fs.createWriteStream(`static/pdfs/${trimmedFileName}`);
+    try {
+      const res = await drive.files.get(
+        { fileId: file.id, alt: 'media' },
+        { responseType: 'stream' }
+      );
+      res.data
+        .on('end', function () {
+          console.log(`Downloading ${trimmedFileName}...`);
+        })
+        .on('error', function (err) {
+          console.log('Error during download', err);
+        })
+        .pipe(dest);
+    } catch (err) {
+      console.log(`Download error: ${err}`);
+    }
+  };
+  files.map(downloadFile);
 }
 
-/**
- * Lists the names and IDs of up to 10 files.
- * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
- */
-async function getFile(auth, fileId) {
+async function getFiles(auth, files) {
   const drive = google.drive({ version: 'v3', auth });
+  const getFile = async (file) => {
+    try {
+      const res = await drive.files.get({
+        fileId: file.id,
+        fields: '*',
+      });
+      const formattedFileName = res.data.name.includes('.')
+        ? removeFileExtension(res.data.name)
+        : res.data.name;
+      return {
+        fileName: cleanupFileName(formattedFileName),
+        trimmedName: cleanupFileName(res.data.name),
+        link: res.data.webViewLink,
+        downloadLink: res.data.webContentLink,
+      };
+    } catch (err) {
+      console.log(`The API returned an error: ${err}`);
+    }
+  };
+  return Promise.all(files.map(getFile));
+}
+
+function writeDataFile(content) {
+  const path = 'src/_data/bookData.json';
+  if (!fs.existsSync(path)) {
+    console.log(`${path} already exists`);
+  }
   try {
-    const res = await drive.files.get({ fileId: fileId, fields: '*' });
-    const formattedFileName = res.data.name.includes('.')
-      ? removeFileExtension(res.data.name)
-      : res.data.name;
-    return {
-      fileName: formattedFileName,
-      trimmedName: removeSpaces(res.data.name),
-      link: res.data.webViewLink,
-      downloadLink: res.data.webContentLink,
-    };
+    console.log(`Writing data file to ${path}`);
+    fs.writeFileSync(path, JSON.stringify(content));
+    console.log(`Finished writing data file`);
   } catch (err) {
-    console.log(`The API returned an error: ${err}`);
+    console.log(`Error writing data file: ${err}`);
   }
 }
 
@@ -163,6 +182,9 @@ function removeFileExtension(fileName) {
   return fileName.split('.').slice(0, -1).join('.');
 }
 
-function removeSpaces(fileName) {
+function cleanupFileName(fileName) {
+  if (fileName.includes('-Notebook')) {
+    return fileName.replace('-Notebook', '').replace(/\s/g, '');
+  }
   return fileName.replace(/\s/g, '');
 }

@@ -1,7 +1,7 @@
 @tailwind base;
 
 h1 {
-  @apply text-2xl;
+  @apply text-2xl font-bold;
 }
 h2 {
   @apply text-xl;
@@ -22,5 +22,5 @@ a {
 }
 
 .book {
-  @apply max-w-xs p-4 mb-4 text-center bg-red-300 border-2 border-gray-200;
+  @apply max-w-xs p-4 m-6 text-center bg-gray-100 border-2 border-gray-300 rounded-md;
 }
