@@ -1,6 +1,7 @@
 const fs = require('fs');
 const readline = require('readline');
 const { google } = require('googleapis');
+const credentials = require('./credentials');
 require('dotenv').config();
 
 // If modifying these scopes, delete token.json.
@@ -16,8 +17,7 @@ const TOKEN_PATH = 'src/_utils/token.json';
 function init() {
   try {
     // Authorize a client with credentials, then call the Google Drive API.
-    const content = JSON.parse(process.env.CREDENTIALS);
-    authorize(content, listFiles);
+    authorize(credentials, listFiles);
   } catch (err) {
     console.log(`Problem with authorization: ${err}`);
   }
