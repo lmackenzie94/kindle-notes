@@ -13,12 +13,15 @@ const SCOPES = [
 // time.
 const TOKEN_PATH = 'src/_utils/token.json';
 
-// Load client secrets from a local file.
-fs.readFile('src/_utils/credentials.json', (err, content) => {
-  if (err) return console.log('Error loading client secret file:', err);
-  // Authorize a client with credentials, then call the Google Drive API.
-  authorize(JSON.parse(content), listFiles);
-});
+function init() {
+  try {
+    // Authorize a client with credentials, then call the Google Drive API.
+    const content = JSON.parse(process.env.CREDENTIALS);
+    authorize(content, listFiles);
+  } catch (err) {
+    console.log(`Problem with authorization: ${err}`);
+  }
+}
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -90,9 +93,9 @@ function listFiles(auth) {
       const files = res.data.files;
       if (files.length) {
         files.map((file) => {
-          let formattedFileName = removeFileExtension(removeSpaces(file.name));
+          let trimmedFileName = removeSpaces(file.name);
           getFile(auth, file.id);
-          downloadFile(auth, file.id, formattedFileName);
+          downloadFile(auth, file.id, trimmedFileName);
         });
       } else {
         console.log('No files found.');
@@ -106,8 +109,12 @@ function listFiles(auth) {
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
 async function downloadFile(auth, fileId, fileName) {
+  if (fs.existsSync(`static/pdfs/${fileName}`)) {
+    console.log(`${fileName} already exists`);
+    return;
+  }
   const drive = google.drive({ version: 'v3', auth });
-  const dest = fs.createWriteStream(`static/pdfs/${fileName}.pdf`);
+  const dest = fs.createWriteStream(`static/pdfs/${fileName}`);
   try {
     const res = await drive.files.get(
       { fileId: fileId, alt: 'media' },
@@ -143,27 +150,12 @@ async function getFile(auth, fileId) {
       link: res.data.webViewLink,
       downloadLink: res.data.webContentLink,
     };
-    // console.log({
-    //   fileName: formattedFileName,
-    //   trimmedName: removeSpaces(file.data.name),
-    //   link: file.data.webViewLink,
-    //   downloadLink: file.data.webContentLink,
-    // });
   } catch (err) {
     console.log(`The API returned an error: ${err}`);
   }
 }
 
-// function init() {
-//   // Load client secrets from a local file.
-//   fs.readFile('src/_utils/credentials.json', (err, content) => {
-//     if (err) return console.log('Error loading client secret file:', err);
-//     // Authorize a client with credentials, then call the Google Drive API.
-//     authorize(JSON.parse(content), listFiles);
-//   });
-// }
-
-// init();
+init();
 
 // UTILITY FUNCTIONS
 
