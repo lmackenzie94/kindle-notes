@@ -2,4 +2,3 @@
   command = "yarn build"
   publish = "dist"
   environment = {FOLDER_ID = "1b2yqS_TJcBega96m7ZxMpGvNZoY91LpG", ELEVENTY_ENV = "development", CLIENT_SECRET = "hb4o2dukhcSx8Bb1f7dNBRfr"}
-}
