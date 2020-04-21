@@ -1,0 +1,26 @@
+@tailwind base;
+
+h1 {
+  @apply text-2xl;
+}
+h2 {
+  @apply text-xl;
+}
+h3 {
+  @apply text-lg;
+}
+a {
+  @apply text-blue-600 underline;
+}
+
+@tailwind components;
+
+@tailwind utilities;
+
+.section {
+  @apply w-full py-4;
+}
+
+.book {
+  @apply max-w-xs p-4 mb-4 text-center bg-red-300 border-2 border-gray-200;
+}

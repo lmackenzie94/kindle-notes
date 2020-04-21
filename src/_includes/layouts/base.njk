@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {# {% include "components/head.njk" %} #}
+        <title>Kindle Notes App</title>
+        {% if env == 'production' %}
+            {# capture the CSS content and store is Nunjucks variable called 'css' #}
+            {% set css %}{% include "css/style.min.css" %}{% endset%}
+            <style>
+                {{css | safe}}
+            </style>
+        {% else %}
+            <link rel="stylesheet" href="/assets/style.css">
+        {% endif %}
+
+    </head>
+
+    <body>
+        {% include "components/header.njk"%}
+        <main class="container">
+            {{ content | safe }}
+        </main>
+        {# {% include "components/footer.njk"%} #}
+    </body>
+
+</html>
