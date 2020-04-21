@@ -2,15 +2,6 @@ const fs = require('fs');
 const readline = require('readline');
 const { google } = require('googleapis');
 require('dotenv').config();
-// const pdf = require('pdf-parse');
-// const path = require('path');
-
-// let dataBuffer = fs.readFileSync(path.resolve('PDFs', 'OutgrowingGod.pdf'));
-
-// pdf(dataBuffer).then(function (data) {
-//   // PDF text
-//   console.log(data.text);
-// });
 
 // If modifying these scopes, delete token.json.
 const SCOPES = [
@@ -83,14 +74,14 @@ function getAccessToken(oAuth2Client, callback) {
 }
 
 /**
- * Lists the names and IDs of up to 10 files.
+ * Lists the names and IDs of up the files
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
 function listFiles(auth) {
   const drive = google.drive({ version: 'v3', auth });
   drive.files.list(
     {
-      pageSize: 10,
+      // pageSize: 10,
       q: `"${process.env.FOLDER_ID}" in parents`,
       fields: 'nextPageToken, files(id, name)',
     },
@@ -110,32 +101,57 @@ function listFiles(auth) {
   );
 }
 
-function removeFileExtension(fileName) {
-  return fileName.split('.').slice(0, -1).join('.');
-}
-
-function removeSpaces(fileName) {
-  return fileName.replace(/\s/g, '');
-}
-
-function downloadFile(auth, fileId, fileName) {
-  console.log(fileName);
+/**
+ * Downloads the files to a local directory
+ * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
+ */
+async function downloadFile(auth, fileId, fileName) {
   const drive = google.drive({ version: 'v3', auth });
   const dest = fs.createWriteStream(`static/pdfs/${fileName}.pdf`);
-  drive.files.get(
-    { fileId: fileId, alt: 'media' },
-    { responseType: 'stream' },
-    function (err, res) {
-      res.data
-        .on('end', function () {
-          console.log('Done');
-        })
-        .on('error', function (err) {
-          console.log('Error during download', err);
-        })
-        .pipe(dest);
-    }
-  );
+  try {
+    const res = await drive.files.get(
+      { fileId: fileId, alt: 'media' },
+      { responseType: 'stream' }
+    );
+    res.data
+      .on('end', function () {
+        console.log(`Downloading ${fileName}...`);
+      })
+      .on('error', function (err) {
+        console.log('Error during download', err);
+      })
+      .pipe(dest);
+  } catch (err) {
+    console.log(`Download error: ${err}`);
+  }
+}
+
+/**
+ * Lists the names and IDs of up to 10 files.
+ * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
+ */
+async function getFile(auth, fileId) {
+  const drive = google.drive({ version: 'v3', auth });
+  try {
+    const res = await drive.files.get({ fileId: fileId, fields: '*' });
+    const formattedFileName = res.data.name.includes('.')
+      ? removeFileExtension(res.data.name)
+      : res.data.name;
+    return {
+      fileName: formattedFileName,
+      trimmedName: removeSpaces(res.data.name),
+      link: res.data.webViewLink,
+      downloadLink: res.data.webContentLink,
+    };
+    // console.log({
+    //   fileName: formattedFileName,
+    //   trimmedName: removeSpaces(file.data.name),
+    //   link: file.data.webViewLink,
+    //   downloadLink: file.data.webContentLink,
+    // });
+  } catch (err) {
+    console.log(`The API returned an error: ${err}`);
+  }
 }
 
 // function init() {
@@ -149,24 +165,12 @@ function downloadFile(auth, fileId, fileName) {
 
 // init();
 
-function getFile(auth, fileId) {
-  const drive = google.drive({ version: 'v3', auth });
-  drive.files.get({ fileId: fileId, fields: '*' }, (err, res) => {
-    if (err) return console.log(`The API returned an error: ${err}`);
-    const formattedFileName = res.data.name.includes('.')
-      ? removeFileExtension(res.data.name)
-      : res.data.name;
-    console.log({
-      fileName: formattedFileName,
-      trimmedName: removeSpaces(res.data.name),
-      link: res.data.webViewLink,
-      downloadLink: res.data.webContentLink,
-    });
-    return {
-      fileName: formattedFileName,
-      trimmedName: removeSpaces(res.data.name),
-      link: res.data.webViewLink,
-      downloadLink: res.data.webContentLink,
-    };
-  });
+// UTILITY FUNCTIONS
+
+function removeFileExtension(fileName) {
+  return fileName.split('.').slice(0, -1).join('.');
+}
+
+function removeSpaces(fileName) {
+  return fileName.replace(/\s/g, '');
 }
