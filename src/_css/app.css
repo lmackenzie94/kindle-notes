@@ -42,6 +42,10 @@ i {
   @apply flex items-center justify-between w-full p-6 bg-white border border-gray-300;
 }
 
+.book p {
+  max-width: 85%;
+}
+
 /* goodreads icons */
 .icon {
   position: absolute;

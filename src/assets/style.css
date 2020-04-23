@@ -653,6 +653,10 @@ i {
   border-color: #e2e8f0;
 }
 
+.book p {
+  max-width: 85%;
+}
+
 /* goodreads icons */
 
 .icon {
