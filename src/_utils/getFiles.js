@@ -152,6 +152,10 @@ async function getFiles(auth, files) {
         fileName: removeSpacesAndSymbols(cleanupFileName(res.data.name)),
         link: res.data.webViewLink,
         downloadLink: res.data.webContentLink,
+        previewLink: res.data.webViewLink.replace(
+          'view?usp=drivesdk',
+          'preview'
+        ),
       };
     } catch (err) {
       console.log(`The API returned an error: ${err}`);
