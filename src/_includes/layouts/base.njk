@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        {# {% include "components/head.njk" %} #}
+        {% include "components/head.njk" %}
         <title>Kindle Notes App</title>
         <script src="https://kit.fontawesome.com/189183f6f0.js" crossorigin="anonymous"></script>
         {% if env == 'production' %}
@@ -22,6 +22,12 @@
             {{ content | safe }}
         </main>
         {# {% include "components/footer.njk"%} #}
+        {% set js %}
+        {% include "js/rebuild.js" %}
+        {% endset %}
+        <script>
+            {{ js | jsmin | safe }}
+        </script>
     </body>
 
 </html>

@@ -9,10 +9,14 @@ description: "Kindle Book Notes"
         <h2 class="mb-2 text-base font-bold">My Books</h2>
         <div class="booklist">
             {% for book in bookData %}
-                {# works only if name doesn't have a symbol in it #}
-                <a class="book hover:bg-gray-200 focus:outline-none active:bg-gray-200" href="/notes/{{book.fileName}}">
-                    <p class="text-sm font-bold md:text-lg">{{book.title}}</p>
-                </a>
+                <div class="relative">
+                    <a class="book hover:bg-gray-200 focus:outline-none active:bg-gray-200" href="/notes/{{book.fileName}}">
+                        <p class="text-base font-bold md:text-lg">{{book.title}}</p>
+                    </a>
+                    <a href="/" class="absolute downloadIcon ">
+                        <i class="text-gray-500 fa fa-download hover:text-teal-700" aria-label="download"></i>
+                    </a>
+                </div>
             {% endfor %}
         </div>
     </div>

@@ -1,7 +1,7 @@
 @tailwind base;
 
 body {
-  background-color: #e3e8e8;
+  background-color: #d5e8e8;
 }
 
 header {
@@ -22,6 +22,10 @@ a {
   color: inherit;
 }
 
+i {
+  transition: color 0.2s ease-out;
+}
+
 .section {
   @apply w-full py-4;
 }
@@ -35,14 +39,58 @@ a {
 }
 
 .book {
-  @apply block w-full p-6 bg-white border border-gray-300;
+  @apply flex items-center justify-between w-full p-6 bg-white border border-gray-300;
 }
 
+/* goodreads icons */
 .icon {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   right: 20px;
+}
+
+.downloadIcon {
+  top: 0;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.rebuild {
+  position: absolute;
+  outline: none;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+}
+.rebuild:focus {
+  outline: none;
+}
+
+#rebuild-message {
+  display: none;
+  top: 125%;
+  left: 0;
+}
+
+#rebuild-message:before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 10px;
+  height: 10px;
+  width: 10px;
+  transform: rotate(45deg);
+  background: #fff;
+}
+
+#rebuild-message.success {
+  display: inline-block;
+  color: green;
+}
+#rebuild-message.error {
+  display: inline-block;
+  color: red;
 }
 
 @tailwind components;
