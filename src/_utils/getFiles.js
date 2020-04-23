@@ -110,7 +110,7 @@ async function downloadFiles(auth, files) {
   const drive = google.drive({ version: 'v3', auth });
 
   const downloadFile = async (file) => {
-    let trimmedFileName = removeSpaces(file.name);
+    let trimmedFileName = removeSpacesAndSymbols(cleanupFileName(file.name));
     if (fs.existsSync(`static/pdfs/${trimmedFileName}`)) {
       console.log(`${trimmedFileName} already exists`);
       return;
@@ -148,8 +148,8 @@ async function getFiles(auth, files) {
         ? removeFileExtension(res.data.name)
         : res.data.name;
       return {
-        fileName: cleanupFileName(formattedFileName),
-        trimmedName: cleanupFileName(removeSpaces(res.data.name)),
+        title: cleanupFileName(formattedFileName),
+        fileName: removeSpacesAndSymbols(cleanupFileName(res.data.name)),
         link: res.data.webViewLink,
         downloadLink: res.data.webContentLink,
       };
@@ -189,6 +189,7 @@ function cleanupFileName(fileName) {
   return fileName;
 }
 
-function removeSpaces(fileName) {
-  return fileName.replace(/\s/g, '');
+function removeSpacesAndSymbols(fileName) {
+  // except periods
+  return fileName.replace(/[^\w.]+/g, '');
 }

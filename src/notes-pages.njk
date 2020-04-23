@@ -1,0 +1,18 @@
+---
+layout: default
+pagination:
+    data: bookData
+    size: 1
+    alias: bookNote
+permalink: "notes/{{ bookNote.fileName | slug }}/"
+---
+<section class="section">
+    <div class="container">
+        <h1>{{bookNote.title}}</h1>
+        <a href={{bookNote.link}}>Go To Notes</a>
+        <object data="/static/pdfs/{{bookNote.fileName}}" type="application/pdf" width="100%" height="700px" class="my-3">
+            <p>Sorry, your browser does not support PDFs.</p>
+        </object>
+    </div>
+
+</section>
