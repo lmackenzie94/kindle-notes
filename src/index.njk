@@ -4,16 +4,22 @@ title: Home
 description: "Kindle Book Notes"
 ---
 
-<section class="section">
-    <h2>My Books</h2>
-    <div class="container flex flex-wrap justify-center p-8 border-2 border-black">
-        {% for book in bookData %}
-            <div class="book">
-                <h3 class="font-bold">{{book.fileName}}</h3>
-                <embed src="/static/pdfs/{{book.trimmedName}}" width="100%" class="my-3"/>
-                <a href="{{book.downloadLink}}">DOWNLOAD NOTES</a>
-                {# <a href="{{book.link}}">View Notes</a> #}
-            </div>
-        {% endfor %}
+<section class="max-h-screen section">
+    <div class="container flex flex-col items-center justify-center">
+        <h2 class="mb-2 text-base font-bold">My Books</h2>
+        <div class="booklist">
+            {% for book in bookData %}
+                <a class="book hover:bg-gray-200 focus:outline-none active:bg-gray-200" href="/">
+                    <p class="text-sm font-bold md:text-lg">{{book.fileName}}</p>
+                </a>
+            {% endfor %}
+        </div>
     </div>
+
 </section>
+
+{# 
+ <object data="/static/pdfs/{{book.trimmedName}}" type="application/pdf" width="100%" class="my-3">
+    <p>Sorry, your browser does not support PDFs.</p>
+ </object>
+ #}

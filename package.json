@@ -10,7 +10,7 @@
     "watch": "npm-run-all --parallel watch:css watch:html",
     "watch:css": "postcss src/_css/app.css -o src/assets/style.css --watch",
     "watch:html": "eleventy --serve --port=1994",
-    "dev": "del-cli dist && npm run watch",
+    "start": "del-cli dist && npm run watch",
     "data": "node src/_utils/getFiles"
   },
   "devDependencies": {
@@ -19,6 +19,7 @@
     "postcss-cli": "^7.1.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "@fullhuman/postcss-purgecss": "^2.1.2",
     "autoprefixer": "^9.7.6",
     "cross-env": "^7.0.2",

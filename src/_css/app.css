@@ -1,7 +1,15 @@
 @tailwind base;
 
+body {
+  background-color: #e3e8e8;
+}
+
+header {
+  max-width: 95%;
+}
+
 h1 {
-  @apply text-2xl font-bold;
+  @apply text-2xl;
 }
 h2 {
   @apply text-xl;
@@ -10,17 +18,33 @@ h3 {
   @apply text-lg;
 }
 a {
-  @apply text-blue-600 underline;
+  text-decoration: none;
+  color: inherit;
 }
-
-@tailwind components;
-
-@tailwind utilities;
 
 .section {
   @apply w-full py-4;
 }
 
-.book {
-  @apply max-w-xs p-4 m-6 text-center bg-gray-100 border-2 border-gray-300 rounded-md;
+.booklist {
+  @apply bg-white border border-gray-500 rounded-lg shadow-lg;
+  width: 95%;
+  max-width: 600px;
+  max-height: 600px;
+  overflow-y: scroll;
 }
+
+.book {
+  @apply block w-full p-6 bg-white border border-gray-300;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+}
+
+@tailwind components;
+
+@tailwind utilities;

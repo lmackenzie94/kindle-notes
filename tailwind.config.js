@@ -5,4 +5,7 @@ module.exports = {
       center: true,
     },
   },
+  variants: {
+    backgroundColor: ['hover', 'focus', 'active'],
+  },
 };
