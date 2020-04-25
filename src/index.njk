@@ -10,7 +10,7 @@ description: "Kindle Book Notes"
         <div class="booklist">
             {% for book in bookData %}
                 <div class="relative">
-                    <a class="book hover:bg-gray-200 focus:outline-none active:bg-gray-200" href="/notes/{{book.fileName}}">
+                    <a class="book {% if book.idx % 2 === 0 %} bg-white {% else %} bg-gray-200 {% endif %} hover:bg-gray-400 focus:outline-none active:bg-gray-400" href="/notes/{{book.fileName}}">
                         <p class="text-base font-bold md:text-lg">{{book.title}}</p>
                     </a>
                     <a href="{{book.downloadLink}}" class="absolute downloadIcon ">

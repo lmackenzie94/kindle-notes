@@ -108,13 +108,16 @@ function getFiles(files) {
     (file) => file.id === '1sxcsW7WWgdpuE0l1TAQq_xMH3SqlCQBi'
   );
 
+  let idx = 0;
   const fileData = Array.from(
     files.map((file) => {
+      idx++;
       const formattedFileName = file.name.includes('.')
         ? removeFileExtension(file.name)
         : file.name;
 
       return {
+        idx,
         title: cleanupFileName(formattedFileName),
         fileName: removeSpacesAndSymbols(cleanupFileName(file.name)),
         link: file.webViewLink,
@@ -125,6 +128,7 @@ function getFiles(files) {
   ).filter((file) => file.title !== 'Key Learnings');
 
   const formattedKeyLearnings = {
+    idx: 0,
     title: 'Key Learnings',
     fileName: removeSpacesAndSymbols(cleanupFileName(keyLearningsObj.name)),
     link: keyLearningsObj.webViewLink,
