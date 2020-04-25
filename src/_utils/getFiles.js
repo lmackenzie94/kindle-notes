@@ -105,21 +105,21 @@ function listFiles(auth) {
 
 function getFiles(files) {
   const keyLearningsObj = files.find(
-    (file) => file.id === '1sxcsW7WWgdpuE0l1TAQq_xMH3SqlCQBi'
+    (file) => file.name === 'Key Learnings.pdf'
   );
 
   let idx = 0;
   const fileData = Array.from(
     files.map((file) => {
       idx++;
-      const formattedFileName = file.name.includes('.')
-        ? removeFileExtension(file.name)
-        : file.name;
+
+      const { title, author } = getTitleAndAuthor(file.name);
 
       return {
         idx,
-        title: cleanupFileName(formattedFileName),
-        fileName: removeSpacesAndSymbols(cleanupFileName(file.name)),
+        title,
+        author,
+        fileName: trimFileName(file.name),
         link: file.webViewLink,
         downloadLink: file.webContentLink,
         previewLink: file.webViewLink.replace('view?usp=drivesdk', 'preview'),
@@ -129,8 +129,8 @@ function getFiles(files) {
 
   const formattedKeyLearnings = {
     idx: 0,
-    title: 'Key Learnings',
-    fileName: removeSpacesAndSymbols(cleanupFileName(keyLearningsObj.name)),
+    title: 'KEY LEARNINGS',
+    fileName: trimFileName(keyLearningsObj.name),
     link: keyLearningsObj.webViewLink,
     downloadLink: keyLearningsObj.webContentLink,
     previewLink: keyLearningsObj.webViewLink.replace(
@@ -160,20 +160,15 @@ init();
 
 // UTILITY FUNCTIONS
 
-function removeFileExtension(fileName) {
-  return fileName.split('.').slice(0, -1).join('.');
+function getTitleAndAuthor(fileName) {
+  const splitName = fileName.replace('.pdf', '').split(' - ');
+  const title = splitName[0];
+  const author = splitName[1];
+  return { title, author };
 }
 
-function cleanupFileName(fileName) {
-  if (fileName.includes('-Notebook')) {
-    return fileName.replace('-Notebook', '');
-  }
-  return fileName;
-}
-
-function removeSpacesAndSymbols(fileName) {
-  // except periods
-  return fileName.replace(/[^\w.]+/g, '');
+function trimFileName(fileName) {
+  return fileName.replace('.pdf', '').replace(/[^0-9a-z]/gi, '');
 }
 
 // NOT USING
