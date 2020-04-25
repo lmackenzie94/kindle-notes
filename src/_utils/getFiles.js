@@ -84,16 +84,17 @@ function listFiles(auth) {
   const drive = google.drive({ version: 'v3', auth });
   drive.files.list(
     {
-      // pageSize: 10,
       q: `"${process.env.FOLDER_ID}" in parents`,
-      fields: 'nextPageToken, files(id, name)',
+      fields:
+        'nextPageToken, files(id, name, createdTime, webViewLink, webContentLink)',
+      orderBy: 'name',
     },
-    async (err, res) => {
+    (err, res) => {
       if (err) return console.log('The API returned an error: ' + err);
       const files = res.data.files;
       if (files.length) {
-        downloadFiles(auth, files);
-        const content = await getFiles(auth, files);
+        // downloadFiles(auth, files);
+        const content = getFiles(files);
         writeDataFile(content);
       } else {
         console.log('No files found.');
@@ -102,66 +103,39 @@ function listFiles(auth) {
   );
 }
 
-/**
- * Downloads the files to a local directory
- * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
- */
-async function downloadFiles(auth, files) {
-  const drive = google.drive({ version: 'v3', auth });
+function getFiles(files) {
+  const keyLearningsObj = files.find(
+    (file) => file.id === '1sxcsW7WWgdpuE0l1TAQq_xMH3SqlCQBi'
+  );
 
-  const downloadFile = async (file) => {
-    let trimmedFileName = removeSpacesAndSymbols(cleanupFileName(file.name));
-    if (fs.existsSync(`static/pdfs/${trimmedFileName}`)) {
-      console.log(`${trimmedFileName} already exists`);
-      return;
-    }
-    const dest = fs.createWriteStream(`static/pdfs/${trimmedFileName}`);
-    try {
-      const res = await drive.files.get(
-        { fileId: file.id, alt: 'media' },
-        { responseType: 'stream' }
-      );
-      res.data
-        .on('end', function () {
-          console.log(`Downloading ${trimmedFileName}...`);
-        })
-        .on('error', function (err) {
-          console.log('Error during download', err);
-        })
-        .pipe(dest);
-    } catch (err) {
-      console.log(`Download error: ${err}`);
-    }
-  };
-  files.map(downloadFile);
-}
+  const fileData = Array.from(
+    files.map((file) => {
+      const formattedFileName = file.name.includes('.')
+        ? removeFileExtension(file.name)
+        : file.name;
 
-async function getFiles(auth, files) {
-  const drive = google.drive({ version: 'v3', auth });
-  const getFile = async (file) => {
-    try {
-      const res = await drive.files.get({
-        fileId: file.id,
-        fields: '*',
-      });
-      const formattedFileName = res.data.name.includes('.')
-        ? removeFileExtension(res.data.name)
-        : res.data.name;
       return {
         title: cleanupFileName(formattedFileName),
-        fileName: removeSpacesAndSymbols(cleanupFileName(res.data.name)),
-        link: res.data.webViewLink,
-        downloadLink: res.data.webContentLink,
-        previewLink: res.data.webViewLink.replace(
-          'view?usp=drivesdk',
-          'preview'
-        ),
+        fileName: removeSpacesAndSymbols(cleanupFileName(file.name)),
+        link: file.webViewLink,
+        downloadLink: file.webContentLink,
+        previewLink: file.webViewLink.replace('view?usp=drivesdk', 'preview'),
       };
-    } catch (err) {
-      console.log(`The API returned an error: ${err}`);
-    }
+    })
+  ).filter((file) => file.title !== 'Key Learnings');
+
+  const formattedKeyLearnings = {
+    title: 'Key Learnings',
+    fileName: keyLearningsObj.name,
+    link: keyLearningsObj.webViewLink,
+    downloadLink: keyLearningsObj.webContentLink,
+    previewLink: keyLearningsObj.webViewLink.replace(
+      'view?usp=drivesdk',
+      'preview'
+    ),
   };
-  return Promise.all(files.map(getFile));
+  fileData.unshift(formattedKeyLearnings);
+  return fileData;
 }
 
 function writeDataFile(content) {
@@ -197,3 +171,67 @@ function removeSpacesAndSymbols(fileName) {
   // except periods
   return fileName.replace(/[^\w.]+/g, '');
 }
+
+// NOT USING
+
+/**
+ * Downloads the files to a local directory
+ * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
+ */
+// async function downloadFiles(auth, files) {
+//   const drive = google.drive({ version: 'v3', auth });
+
+//   const downloadFile = async (file) => {
+//     let trimmedFileName = removeSpacesAndSymbols(cleanupFileName(file.name));
+//     if (fs.existsSync(`static/pdfs/${trimmedFileName}`)) {
+//       console.log(`${trimmedFileName} already exists`);
+//       return;
+//     }
+//     const dest = fs.createWriteStream(`static/pdfs/${trimmedFileName}`);
+//     try {
+//       const res = await drive.files.get(
+//         { fileId: file.id, alt: 'media' },
+//         { responseType: 'stream' }
+//       );
+//       res.data
+//         .on('end', function () {
+//           console.log(`Downloading ${trimmedFileName}...`);
+//         })
+//         .on('error', function (err) {
+//           console.log('Error during download', err);
+//         })
+//         .pipe(dest);
+//     } catch (err) {
+//       console.log(`Download error: ${err}`);
+//     }
+//   };
+//   files.map(downloadFile);
+// }
+
+// async function getFiles(files) {
+// const drive = google.drive({ version: 'v3', auth });
+//   const getFile = async (file) => {
+//     try {
+//       const res = await drive.files.get({
+//         fileId: file.id,
+//         fields: '*',
+//       });
+//       const formattedFileName = res.data.name.includes('.')
+//         ? removeFileExtension(res.data.name)
+//         : res.data.name;
+//       return {
+//         title: cleanupFileName(formattedFileName),
+//         fileName: removeSpacesAndSymbols(cleanupFileName(res.data.name)),
+//         link: res.data.webViewLink,
+//         downloadLink: res.data.webContentLink,
+//         previewLink: res.data.webViewLink.replace(
+//           'view?usp=drivesdk',
+//           'preview'
+//         ),
+//       };
+//     } catch (err) {
+//       console.log(`The API returned an error: ${err}`);
+//     }
+//   };
+//   return Promise.all(files.map(getFile));
+// }
