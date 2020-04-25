@@ -126,7 +126,7 @@ function getFiles(files) {
 
   const formattedKeyLearnings = {
     title: 'Key Learnings',
-    fileName: keyLearningsObj.name,
+    fileName: removeSpacesAndSymbols(cleanupFileName(keyLearningsObj.name)),
     link: keyLearningsObj.webViewLink,
     downloadLink: keyLearningsObj.webContentLink,
     previewLink: keyLearningsObj.webViewLink.replace(

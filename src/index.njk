@@ -13,7 +13,7 @@ description: "Kindle Book Notes"
                     <a class="book hover:bg-gray-200 focus:outline-none active:bg-gray-200" href="/notes/{{book.fileName}}">
                         <p class="text-base font-bold md:text-lg">{{book.title}}</p>
                     </a>
-                    <a href="/" class="absolute downloadIcon ">
+                    <a href="{{book.downloadLink}}" class="absolute downloadIcon ">
                         <i class="text-gray-500 fa fa-download hover:text-teal-700" aria-label="download"></i>
                     </a>
                 </div>
