@@ -109,23 +109,26 @@ function getFiles(files) {
   );
 
   let idx = 0;
+
   const fileData = Array.from(
-    files.map((file) => {
-      idx++;
+    files
+      .filter((file) => file.name !== 'Key Learnings.pdf')
+      .map((file) => {
+        idx++;
 
-      const { title, author } = getTitleAndAuthor(file.name);
+        const { title, author } = getTitleAndAuthor(file.name);
 
-      return {
-        idx,
-        title,
-        author,
-        fileName: trimFileName(file.name),
-        link: file.webViewLink,
-        downloadLink: file.webContentLink,
-        previewLink: file.webViewLink.replace('view?usp=drivesdk', 'preview'),
-      };
-    })
-  ).filter((file) => file.title !== 'Key Learnings');
+        return {
+          idx,
+          title,
+          author,
+          fileName: trimFileName(file.name),
+          link: file.webViewLink,
+          downloadLink: file.webContentLink,
+          previewLink: file.webViewLink.replace('view?usp=drivesdk', 'preview'),
+        };
+      })
+  );
 
   const formattedKeyLearnings = {
     idx: 0,
