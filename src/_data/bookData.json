@@ -27,6 +27,15 @@
   },
   {
     "idx": 3,
+    "title": "American Kingpin",
+    "author": "Nick Bilton",
+    "fileName": "AmericanKingpinNickBilton",
+    "link": "https://drive.google.com/file/d/1S1mOtMG3OZmTCaKkiW_WAMfH2FviIgeQ/view?usp=drivesdk",
+    "downloadLink": "https://drive.google.com/uc?id=1S1mOtMG3OZmTCaKkiW_WAMfH2FviIgeQ&export=download",
+    "previewLink": "https://drive.google.com/file/d/1S1mOtMG3OZmTCaKkiW_WAMfH2FviIgeQ/preview"
+  },
+  {
+    "idx": 4,
     "title": "An Astronaut's Guide to Life on Earth",
     "author": "Chris Hadfield",
     "fileName": "AnAstronautsGuidetoLifeonEarthChrisHadfield",
@@ -35,7 +44,7 @@
     "previewLink": "https://drive.google.com/file/d/1R-a7Wwwm0VtzZBEeQjOVVGi2uaB-eL95/preview"
   },
   {
-    "idx": 4,
+    "idx": 5,
     "title": "Astrophysics for People in a Hurry",
     "author": "Neil deGrasse Tyson",
     "fileName": "AstrophysicsforPeopleinaHurryNeildeGrasseTyson",
@@ -44,7 +53,7 @@
     "previewLink": "https://drive.google.com/file/d/1X83dbhCX9wDzlygkUvZ_oCXDTXwwMZJ7/preview"
   },
   {
-    "idx": 5,
+    "idx": 6,
     "title": "Atomic Habits",
     "author": "James Clear",
     "fileName": "AtomicHabitsJamesClear",
@@ -53,7 +62,16 @@
     "previewLink": "https://drive.google.com/file/d/1ONDuIePOQIEGZb6FAcsDWftiaRF6rej8/preview"
   },
   {
-    "idx": 6,
+    "idx": 7,
+    "title": "Bad Blood",
+    "author": "John Carreyrou",
+    "fileName": "BadBloodJohnCarreyrou",
+    "link": "https://drive.google.com/file/d/1IaHWqU04FDla9D7KgUHBtdkUx9bavfkr/view?usp=drivesdk",
+    "downloadLink": "https://drive.google.com/uc?id=1IaHWqU04FDla9D7KgUHBtdkUx9bavfkr&export=download",
+    "previewLink": "https://drive.google.com/file/d/1IaHWqU04FDla9D7KgUHBtdkUx9bavfkr/preview"
+  },
+  {
+    "idx": 8,
     "title": "Being Mortal",
     "author": "Atul Gawande",
     "fileName": "BeingMortalAtulGawande",
@@ -62,7 +80,7 @@
     "previewLink": "https://drive.google.com/file/d/1Pt6RH6_XneiOA_A5Ff_u4RnXeTmfujUo/preview"
   },
   {
-    "idx": 7,
+    "idx": 9,
     "title": "Born a Crime",
     "author": "Trevor Noah",
     "fileName": "BornaCrimeTrevorNoah",
@@ -71,7 +89,16 @@
     "previewLink": "https://drive.google.com/file/d/1p9xifkowi2JEugT5RiC7dKn47MQVJGnX/preview"
   },
   {
-    "idx": 8,
+    "idx": 10,
+    "title": "Daring Greatly",
+    "author": "Brené Brown",
+    "fileName": "DaringGreatlyBreneBrown",
+    "link": "https://drive.google.com/file/d/1ye_kby1688yZbhefILez9TXeD8WJKUTo/view?usp=drivesdk",
+    "downloadLink": "https://drive.google.com/uc?id=1ye_kby1688yZbhefILez9TXeD8WJKUTo&export=download",
+    "previewLink": "https://drive.google.com/file/d/1ye_kby1688yZbhefILez9TXeD8WJKUTo/preview"
+  },
+  {
+    "idx": 11,
     "title": "Dear Ijeawele, or A Feminist Manifesto in Fifteen Suggestions",
     "author": "Chimamanda Ngozi Adichie",
     "fileName": "DearIjeaweleorAFeministManifestoinFifteenSuggestionsChimamandaNgoziAdichie",
@@ -80,7 +107,7 @@
     "previewLink": "https://drive.google.com/file/d/12ovuevDErvFQMZljRrrW9cJH2ce5rqG3/preview"
   },
   {
-    "idx": 9,
+    "idx": 12,
     "title": "Educated",
     "author": "Tara Westover",
     "fileName": "EducatedTaraWestover",
@@ -89,7 +116,7 @@
     "previewLink": "https://drive.google.com/file/d/1D3loIV8OQ2ZRLWUNjYsNgzERFCWmRE6V/preview"
   },
   {
-    "idx": 10,
+    "idx": 13,
     "title": "Elon Musk, Tesla, SpaceX & the Quest for a Fantastic Future",
     "author": "Ashlee Vance",
     "fileName": "ElonMuskTeslaSpaceXtheQuestforaFantasticFutureAshleeVance",
@@ -98,7 +125,7 @@
     "previewLink": "https://drive.google.com/file/d/1SMH8YHVhdHMv0piorDnIqPjv_27GyX5I/preview"
   },
   {
-    "idx": 11,
+    "idx": 14,
     "title": "Free Will",
     "author": "Sam Harris",
     "fileName": "FreeWillSamHarris",
@@ -107,7 +134,7 @@
     "previewLink": "https://drive.google.com/file/d/172XL26p_KHXFHsTbQMa7WmWawmgdWHiH/preview"
   },
   {
-    "idx": 12,
+    "idx": 15,
     "title": "How To Win Friends",
     "author": "Dale Carnegie",
     "fileName": "HowToWinFriendsDaleCarnegie",
@@ -116,7 +143,7 @@
     "previewLink": "https://drive.google.com/file/d/1bo8g1yPWcnFeTD2kTGuX6dp_7fiSzNq4/preview"
   },
   {
-    "idx": 13,
+    "idx": 16,
     "title": "Into Thin Air",
     "author": "Jon Krakauer",
     "fileName": "IntoThinAirJonKrakauer",
@@ -125,7 +152,7 @@
     "previewLink": "https://drive.google.com/file/d/1MeAzGiMtzssRdcr-8Ix9zNGKpwpjqZsL/preview"
   },
   {
-    "idx": 14,
+    "idx": 17,
     "title": "Kids These Days, Human Capital and the Making of Millennials",
     "author": "Malcolm Harris",
     "fileName": "KidsTheseDaysHumanCapitalandtheMakingofMillennialsMalcolmHarris",
@@ -134,7 +161,7 @@
     "previewLink": "https://drive.google.com/file/d/1smd-pyGwz4z2ZVgOVuZ0c6RHFG8nk7Rd/preview"
   },
   {
-    "idx": 15,
+    "idx": 18,
     "title": "Man's Search for Meaning",
     "author": "Viktor E. Frankl, Harold S. Kushner, William J. Winslade",
     "fileName": "MansSearchforMeaningViktorEFranklHaroldSKushnerWilliamJWinslade",
@@ -143,7 +170,7 @@
     "previewLink": "https://drive.google.com/file/d/1Mz69Tj7g6Bc3qT2Y8LY_xPwwk11O-YKr/preview"
   },
   {
-    "idx": 16,
+    "idx": 19,
     "title": "Milk and Honey",
     "author": "Rupi Kaur",
     "fileName": "MilkandHoneyRupiKaur",
@@ -152,7 +179,7 @@
     "previewLink": "https://drive.google.com/file/d/1BomjE1_QqJM3T_4N1xakA0BOm48_ASjo/preview"
   },
   {
-    "idx": 17,
+    "idx": 20,
     "title": "Notes on a Nervous Planet",
     "author": "Matt Haig",
     "fileName": "NotesonaNervousPlanetMattHaig",
@@ -161,7 +188,7 @@
     "previewLink": "https://drive.google.com/file/d/1yD1Nj75SXoYM8l_qtdNltyvEyqIek8np/preview"
   },
   {
-    "idx": 18,
+    "idx": 21,
     "title": "Outgrowing God",
     "author": "Richard Dawkins",
     "fileName": "OutgrowingGodRichardDawkins",
@@ -170,7 +197,7 @@
     "previewLink": "https://drive.google.com/file/d/1ZaTjVoNyswry0Za7FV2FVTFHS-H4jqVJ/preview"
   },
   {
-    "idx": 19,
+    "idx": 22,
     "title": "Psycho-Cybernetics",
     "author": "Maxwell Maltz",
     "fileName": "PsychoCyberneticsMaxwellMaltz",
@@ -179,7 +206,7 @@
     "previewLink": "https://drive.google.com/file/d/1M7kHTYJeM9ADe3PyvbwQ5xXIeU6huNNt/preview"
   },
   {
-    "idx": 20,
+    "idx": 23,
     "title": "Quiet",
     "author": "Susan Cain",
     "fileName": "QuietSusanCain",
@@ -188,7 +215,7 @@
     "previewLink": "https://drive.google.com/file/d/1e__QdmCuAL3tQRFhdYZwNHTYyuJlnl6A/preview"
   },
   {
-    "idx": 21,
+    "idx": 24,
     "title": "Sapiens",
     "author": "Yuval Noah Harai",
     "fileName": "SapiensYuvalNoahHarai",
@@ -197,7 +224,7 @@
     "previewLink": "https://drive.google.com/file/d/18yfprHm-KBH2TtK6vPPXdOwfGvPMhInI/preview"
   },
   {
-    "idx": 22,
+    "idx": 25,
     "title": "SuperLife",
     "author": "Darin Olien",
     "fileName": "SuperLifeDarinOlien",
@@ -206,7 +233,7 @@
     "previewLink": "https://drive.google.com/file/d/1SnMgoyedOKZbzMwo1LZ8-Dfhq-JvWhLZ/preview"
   },
   {
-    "idx": 23,
+    "idx": 26,
     "title": "Talking to Strangers",
     "author": "Malcolm Gladwell",
     "fileName": "TalkingtoStrangersMalcolmGladwell",
@@ -215,7 +242,7 @@
     "previewLink": "https://drive.google.com/file/d/120qkZ_XJlweEtM984Be6sHy3YTv9btNI/preview"
   },
   {
-    "idx": 24,
+    "idx": 27,
     "title": "Technology vs Humanity",
     "author": "Gerd Leonhard",
     "fileName": "TechnologyvsHumanityGerdLeonhard",
@@ -224,7 +251,7 @@
     "previewLink": "https://drive.google.com/file/d/1RaZbGcIs33QxPj0QCqY4b7yO6057mYTj/preview"
   },
   {
-    "idx": 25,
+    "idx": 28,
     "title": "The Alchemist",
     "author": "Paulo Coelho",
     "fileName": "TheAlchemistPauloCoelho",
@@ -233,7 +260,7 @@
     "previewLink": "https://drive.google.com/file/d/1DR6cmH3QfsBWVKn0S9qnCGpibyYCLRFA/preview"
   },
   {
-    "idx": 26,
+    "idx": 29,
     "title": "The Book of Joy",
     "author": "Dalai Lama, Desmond Tutu, Douglas Carlton Abrams",
     "fileName": "TheBookofJoyDalaiLamaDesmondTutuDouglasCarltonAbrams",
@@ -242,7 +269,7 @@
     "previewLink": "https://drive.google.com/file/d/142OJ2r3kbIfobd-_wkqfuoIIVSp5yByK/preview"
   },
   {
-    "idx": 27,
+    "idx": 30,
     "title": "The Defining Decade, Why Your Twenties Matter",
     "author": "Meg Jay",
     "fileName": "TheDefiningDecadeWhyYourTwentiesMatterMegJay",
@@ -251,7 +278,7 @@
     "previewLink": "https://drive.google.com/file/d/1H6VlonPAuhZF6REnr2VKUPtLVqGX6mU9/preview"
   },
   {
-    "idx": 28,
+    "idx": 31,
     "title": "The Everything Store, Jeff Bezos and the Age of Amazon",
     "author": "Brad Stone",
     "fileName": "TheEverythingStoreJeffBezosandtheAgeofAmazonBradStone",
@@ -260,7 +287,7 @@
     "previewLink": "https://drive.google.com/file/d/1z7AufwTaKeO-anvTAx3A2ny7-35xg6jT/preview"
   },
   {
-    "idx": 29,
+    "idx": 32,
     "title": "The Go-Giver, A Little Story About a Powerful Business Idea",
     "author": "Bob Burg, John David Mann",
     "fileName": "TheGoGiverALittleStoryAboutaPowerfulBusinessIdeaBobBurgJohnDavidMann",
@@ -269,7 +296,7 @@
     "previewLink": "https://drive.google.com/file/d/1dEEBToK50e8XRWBBi17tVhdl9a9BEoUi/preview"
   },
   {
-    "idx": 30,
+    "idx": 33,
     "title": "The Greatness Guide",
     "author": "Robin Sharma",
     "fileName": "TheGreatnessGuideRobinSharma",
@@ -278,7 +305,7 @@
     "previewLink": "https://drive.google.com/file/d/1k5SVhnev7nieddk06WB0LS66anS8U-N2/preview"
   },
   {
-    "idx": 31,
+    "idx": 34,
     "title": "The Hate U Give",
     "author": "Angie Thomas",
     "fileName": "TheHateUGiveAngieThomas",
@@ -287,7 +314,7 @@
     "previewLink": "https://drive.google.com/file/d/1BtOcnFS0Ckl9D6It83rMYkD7Hn2I3Z7U/preview"
   },
   {
-    "idx": 32,
+    "idx": 35,
     "title": "The Little Book of Talent (pt.2)",
     "author": "Daniel Coyle",
     "fileName": "TheLittleBookofTalentpt2DanielCoyle",
@@ -296,7 +323,7 @@
     "previewLink": "https://drive.google.com/file/d/1uh8PBzwyigP-NW9Ghten83Oo61TErErb/preview"
   },
   {
-    "idx": 33,
+    "idx": 36,
     "title": "The Little Book of Talent",
     "author": "Daniel Coyle",
     "fileName": "TheLittleBookofTalentDanielCoyle",
@@ -305,7 +332,7 @@
     "previewLink": "https://drive.google.com/file/d/1bwFV2fFwpBEawDm45ORAubD60FmrbykN/preview"
   },
   {
-    "idx": 34,
+    "idx": 37,
     "title": "The Power of Habit",
     "author": "Charles Duhigg",
     "fileName": "ThePowerofHabitCharlesDuhigg",
@@ -314,7 +341,7 @@
     "previewLink": "https://drive.google.com/file/d/1JwICFzGwQv3ntCKpvtUy4lKQaOaHXTYp/preview"
   },
   {
-    "idx": 35,
+    "idx": 38,
     "title": "The Rosie Effect",
     "author": "Graeme Simsion",
     "fileName": "TheRosieEffectGraemeSimsion",
@@ -323,7 +350,7 @@
     "previewLink": "https://drive.google.com/file/d/1RvBt9vndvSA0chKfcjXDlWlyMUT4kQpN/preview"
   },
   {
-    "idx": 36,
+    "idx": 39,
     "title": "The Rosie Project",
     "author": "Graeme Simsion",
     "fileName": "TheRosieProjectGraemeSimsion",
@@ -332,7 +359,7 @@
     "previewLink": "https://drive.google.com/file/d/1ltEUIzmnMpBnj9HLNBh3T0mOuZJyG97C/preview"
   },
   {
-    "idx": 37,
+    "idx": 40,
     "title": "The Rosie Result",
     "author": "Graeme Simsion",
     "fileName": "TheRosieResultGraemeSimsion",
@@ -341,7 +368,7 @@
     "previewLink": "https://drive.google.com/file/d/14LwFWcyK8oRnSlavN3wArpA3Ly8Lp_1y/preview"
   },
   {
-    "idx": 38,
+    "idx": 41,
     "title": "The Subtle Art of Not Giving a Fuck",
     "author": "Mark Manson",
     "fileName": "TheSubtleArtofNotGivingaFuckMarkManson",
@@ -350,7 +377,7 @@
     "previewLink": "https://drive.google.com/file/d/1CsWI68PwIToq5gcDx8ZfrhGJrW7azxir/preview"
   },
   {
-    "idx": 39,
+    "idx": 42,
     "title": "To Pixar and Beyond, My Unlikely Journey with Steve Jobs to Make Entertainment History",
     "author": "Lawrence Levy",
     "fileName": "ToPixarandBeyondMyUnlikelyJourneywithSteveJobstoMakeEntertainmentHistoryLawrenceLevy",
@@ -359,7 +386,7 @@
     "previewLink": "https://drive.google.com/file/d/1CLhJWLEidXnHxWw0ZPXDUmw54pR7maTZ/preview"
   },
   {
-    "idx": 40,
+    "idx": 43,
     "title": "Tuesdays with Morrie",
     "author": "Mitch Albom",
     "fileName": "TuesdayswithMorrieMitchAlbom",
@@ -368,7 +395,7 @@
     "previewLink": "https://drive.google.com/file/d/14jAzAqudNIz01s57wW5L8iZ1Hd1lLQOE/preview"
   },
   {
-    "idx": 41,
+    "idx": 44,
     "title": "UnLearn, 101 Simple Truths For A Better Life",
     "author": "Humble Poet",
     "fileName": "UnLearn101SimpleTruthsForABetterLifeHumblePoet",
@@ -377,7 +404,7 @@
     "previewLink": "https://drive.google.com/file/d/1TdxJdL5Z3P1MRJWBQeudZIZGmpQCgNaU/preview"
   },
   {
-    "idx": 42,
+    "idx": 45,
     "title": "we carry the sky",
     "author": "Mckayla Robbin",
     "fileName": "wecarrytheskyMckaylaRobbin",
@@ -386,7 +413,7 @@
     "previewLink": "https://drive.google.com/file/d/1yDRNM_Z8uWh931kEte-i9Hw8pesquq2I/preview"
   },
   {
-    "idx": 43,
+    "idx": 46,
     "title": "We Should All Be Feminists",
     "author": "Chimamanda Ngozi Adichie",
     "fileName": "WeShouldAllBeFeministsChimamandaNgoziAdichie",
@@ -395,7 +422,7 @@
     "previewLink": "https://drive.google.com/file/d/1b-_Mw3I6uq-kdeyo_O3tRRMZ_e1B-kKh/preview"
   },
   {
-    "idx": 44,
+    "idx": 47,
     "title": "When Breath Becomes Air",
     "author": "Paul Kalanithi, Abraham Verghese",
     "fileName": "WhenBreathBecomesAirPaulKalanithiAbrahamVerghese",
