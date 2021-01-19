@@ -108,14 +108,21 @@ function getFiles(files) {
     (file) => file.name === 'Key Learnings.pdf'
   );
 
+  const titlesAlreadyDone = [];
   let idx = 0;
 
   const fileData = Array.from(
     files
-      .filter((file) => file.name !== 'Key Learnings.pdf')
+      .filter((file) => {
+        const { title } = getTitleAndAuthor(file.name);
+        if (title === 'Key Learnings' || titlesAlreadyDone.includes(title))
+          return false;
+
+        titlesAlreadyDone.push(title);
+        return true;
+      })
       .map((file) => {
         idx++;
-
         const { title, author } = getTitleAndAuthor(file.name);
 
         return {
