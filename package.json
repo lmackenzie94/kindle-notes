@@ -30,6 +30,6 @@
     "html-minifier": "^4.0.0",
     "pdf-parse": "^1.1.1",
     "tailwindcss": "^1.2.0",
-    "terser": "^4.6.11"
+    "terser": "^4.8.1"
   }
 }
